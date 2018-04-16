@@ -8,18 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @IBOutlet var buttonNewYear: UIButton!
+    @IBOutlet var buttonMemorial: UIButton!
+    @IBOutlet var buttonIndependence: UIButton!
+    @IBOutlet var buttonChristmas: UIButton!
+    
+    @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    let yearMonthArray: Array<String> = ["1월 2일", "6월 6일", "8월 15일", "12월 25일"]
+    var started: Bool!
+    
+    @IBAction func buttonStart(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func buttonHolliday(_ sender: UIButton) {
+        
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+            return yearMonthArray.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return yearMonthArray[row]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let index = pickerView.selectedRow(inComponent: 0)
         // Do any additional setup after loading the view, typically from a nib.
+        started = false
+        //viewHidden.isHidden = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
